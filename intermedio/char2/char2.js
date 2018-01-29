@@ -4,20 +4,22 @@ const User = require('./user_model.js');
 mongoose.connect('mongodb://localhost/LearnNode',(err,connection)=>{
 
 
-    let obj = [
-        {
-            "name": "Mou",
-            "email": "mou@dictioz.com",
-            "password": "123456"
-        },
-        {
-            "name": "Berny",
-            "email": "berny@dictioz.com",
-            "password": "123456"
-        }
-    ];
+    // let obj = [
+    //     {
+    //         "name": "Mou",
+    //         "email": "mou@dictioz.com",
+    //         "password": "123456"
+    //     },
+    //     {
+    //         "name": "Berny",
+    //         "email": "berny@dictioz.com",
+    //         "password": "123456"
+    //     }
+    // ];
+    //
+    // addUser(obj);
 
-    addUser(obj);
+    editUserByEmail('cosme@fulanito.com',{ "name": "Cosme Fulanito"});
 });
 
 /**

@@ -1,6 +1,35 @@
 const mongoose = require('mongoose');
 const User = require('./user_model.js');
 
+const express = require('express');
+const app = express();
+
+app.get('/user/get/all',(req,res)=>{
+
+    findAll(req,res);
+});
+
+app.get('/user/get/:userId',(req,res)=>{
+    User.findById(req.params.userId,(err,doc)=>{
+        res.json(doc);
+    })
+
+});
+
+app.post('/user/new',(req,res)=>{
+
+    console.log(req.body);
+    User.create(req.body,(err,doc)=>{
+        console.log(err,doc);
+        res.json(doc);
+    })
+
+});
+
+app.listen(3000,(err)=>{
+    console.log(err);
+});
+
 mongoose.connect('mongodb://localhost/LearnNode',(err,connection)=>{
 
 
@@ -25,7 +54,7 @@ mongoose.connect('mongodb://localhost/LearnNode',(err,connection)=>{
 
     // removeById('5a6f23928c248a07703c7bcb');
 
-    removeByEmail('mou@dictioz.com');
+    // removeByEmail('mou@dictioz.com');
 });
 
 /**
@@ -49,10 +78,15 @@ function editUserByEmail(email,obj){
     })
 }
 
-function findAll(){
+/**
+ * Find All users
+ * @param req
+ * @param res
+ */
+function findAll(req,res){
     User.find({})
         .exec((err,doc)=>{
-        console.log(doc);
+            res.json(doc);
         })
 }
 

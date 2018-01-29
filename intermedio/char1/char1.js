@@ -21,4 +21,3 @@ mongoose.connect('mongodb://localhost/LearnNode',(err,connection)=>{
     });
 });
 
-
