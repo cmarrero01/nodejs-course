@@ -3,7 +3,7 @@ const User = require('./user_model.js');
 module.exports = (app) => {
     app.get('/user/get/all',(req,res)=>{
         User.find({},(err,doc)=>{
-            req.json(doc);
+            res.json(doc);
         });
     });
 
